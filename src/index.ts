@@ -3,7 +3,11 @@ interface Animal {
   makeSound(): void;
 }
 
-class Dog implements Animal {
+interface Pet {
+  play(): void;
+}
+
+class Cat implements Animal, Pet {
   name: string;
 
   constructor(name: string) {
@@ -11,9 +15,14 @@ class Dog implements Animal {
   }
 
   makeSound() {
-    console.log(`${this.name} says Woof!`);
+    console.log(`${this.name} says Meow!`);
+  }
+
+  play() {
+    console.log(`${this.name} is playing with a ball!`);
   }
 }
 
-const myDog = new Dog("Buddy");
-myDog.makeSound(); // Output: Buddy says Woof!
+const myCat = new Cat("Whiskers");
+myCat.makeSound(); // Output: Whiskers says Meow!
+myCat.play(); // Output: Whiskers is playing with a ball!
