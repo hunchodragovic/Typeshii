@@ -1,9 +1,14 @@
-import SayHello from "./components/SayHello";
+import Heading from "./components/Heading";
+import Layout from "./components/Layout";
+import Status from "./components/Status";
 
 const App = () => {
   return (
     <>
-      <SayHello name="ilyes" />
+      <Status status="loading" />
+      <Layout>
+        <Heading>50</Heading>
+      </Layout>
     </>
   );
 };

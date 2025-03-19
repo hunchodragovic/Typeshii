@@ -1,10 +1,15 @@
 type SayHelloProps = {
-  name: string;
+  arrData: { firstName: string; age: number }[];
 };
-const SayHello = (props: SayHelloProps) => {
+const SayHello = ({ arrData }: SayHelloProps) => {
   return (
     <div>
-      <h1>SayHello {props.name}</h1>
+      {arrData.map((data, index) => (
+        <div key={index}>
+          <h1>Hello, {data.firstName}</h1>
+          <h2>You are {data.age} years old</h2>
+        </div>
+      ))}
     </div>
   );
 };
