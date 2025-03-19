@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface InputProps {
   value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // Add the function type
 }
 
-const Input: React.FC<InputProps> = ({ value }) => {
-  const [inputValue, setInputValue] = useState(value);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-    console.log(event.target.value);
-  };
-
-  return <input type="text" value={inputValue} onChange={handleChange} />;
+const Input: React.FC<InputProps> = ({ value, onChange }) => {
+  return <input type="text" value={value} onChange={onChange} />;
 };
 
 export default Input;
