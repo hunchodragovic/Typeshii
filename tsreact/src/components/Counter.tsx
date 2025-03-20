@@ -1,31 +1,18 @@
-import { useReducer } from "react";
-
-type State = { count: number };
-
-type Action = { type: "increment" } | { type: "decrement" } | { type: "reset" };
-
-const reducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case "increment":
-      return { count: state.count + 1 };
-    case "decrement":
-      return { count: state.count - 1 };
-    case "reset":
-      return { count: 0 };
-    default:
-      return state;
-  }
-};
+import { useRef, useEffect, useState } from "react";
 
 const Counter = () => {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  const [count, setCount] = useState(0);
+  const prevCountRef = useRef<number>(count);
+
+  useEffect(() => {
+    prevCountRef.current = count;
+  }, [count]);
 
   return (
     <div>
-      <h1>Count: {state.count}</h1>
-      <button onClick={() => dispatch({ type: "increment" })}>+</button>
-      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
-      <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+      <p>Current Count: {count}</p>
+      <p>Previous Count: {prevCountRef.current}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
 };
