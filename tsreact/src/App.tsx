@@ -1,12 +1,10 @@
-import Counter from "./components/Counter";
-import InputFocus from "./components/InputFocus";
-
+import CustomBtn from "./components/CustomBtn";
+import "./App.css";
 const App = () => {
   return (
     <>
       <div>
-        <InputFocus />
-        <Counter />
+        <CustomBtn variant="primary" />
       </div>
     </>
   );
